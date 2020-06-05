@@ -4,7 +4,7 @@
 # @Author: Zhenqiu Fu
 # @Date:   2020-06-05 13:23:26
 # @Last Modified by:   Zhenqiu Fu
-# @Last Modified time: 2020-06-05 17:06:15
+# @Last Modified time: 2020-06-05 17:30:25
 
 ### 更新系统//
 # 
@@ -81,6 +81,9 @@ echo "#######################################################################"
 echo "#                          Start to Install Tools                     #"
 echo "#######################################################################"
 echo ""
+
+
+
 
 # install some tools:
 echo "install git"
@@ -161,12 +164,10 @@ wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository 'deb https://typora.io/linux ./'
 sudo apt update && sudo apt install -y typora
 
-
-
-
-# chromeName="chrome.deb"
-# sudo wget -O ${chromeName} -c ${googleChromeLink}
-# sudo dpkg -i ${chromeName}
+googleChromeLink="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+chromeName="chrome.deb"
+sudo wget -O ${chromeName} -c ${googleChromeLink}
+sudo dpkg -i ${chromeName}
 
 # install wps (https://linux.wps.cn/)
 if [ ! -f ./wps-office.deb ]; then
@@ -180,6 +181,42 @@ if [ ! -f ./netease-cloud-music.deb ]; then
     wget -O netease-cloud-music.deb http://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb
 fi
 sudo dpkg -i ./netease-cloud-music.deb
+
+
+if [ "${editer}" == "2" ]; then
+	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+	sleep 2
+	sudo apt-get install -y  apt-transport-https
+	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+	sudo apt-get update
+	sudo apt-get -y install sublime-text
+	echo -e "\033[46;37m The sublime text3 was installed successfully! \033[0m"
+	echo -e "\033[46;37m (sublime安装成功!) \033[0m"
+	sleep 3
+
+fi
+
+
+# install deepin-wine-ubuntu (https://github.com/wszqkzqk/deepin-wine-ubuntu)
+if [ ! -d deepin-wine-for-ubuntu ]; then 
+    git clone --depth=1 https://gitee.com/wszqkzqk/deepin-wine-for-ubuntu.git
+fi
+cd deepin-wine-for-ubuntu
+./install.sh
+cd ..
+
+# install TIM
+if [ ! -f ./deepin.com.qq.office.deb ]; then
+    wget -O deepin.com.qq.office.deb https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_2.0.0deepin4_i386.deb
+fi
+sudo apt install -y ./deepin.com.qq.office.deb
+
+# install WeChat
+if [ ! -f ./deepin.com.wechat.deb ]; then
+    wget -O deepin.com.wechat.deb https://mirror.glavo.site/deepin/deepin.com.wechat_2.6.8.65deepin0_i386.deb
+fi
+sudo apt install -y ./deepin.com.wechat.deb
+
 
 echo ""
 echo "#######################################################################"

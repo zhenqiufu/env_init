@@ -37,6 +37,16 @@ ubuntu 初始环境配置
 
 13. v2ray
 
+14. Google Chrome
+
+15. sublime
+
+16. deepin-wine-ubuntu
+
+17. wechat
+
+18. TIM
+
     更新中...     
 
 
