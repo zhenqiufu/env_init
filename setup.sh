@@ -4,7 +4,7 @@
 # @Author: Zhenqiu Fu
 # @Date:   2020-06-05 13:23:26
 # @Last Modified by:   Zhenqiu Fu
-# @Last Modified time: 2020-06-05 17:30:25
+# @Last Modified time: 2020-06-13 13:36:04
 
 ### 更新系统//
 # 
@@ -124,7 +124,7 @@ sudo apt-get install terminator
 bash <(curl -L -s https://install.direct/go.sh)
 sudo rm /etc/v2ray/config.json
 sudo cp config.json /etc/v2ray/
-sudo service v2ray sart
+sudo service v2ray start
 
 # install CMake (https://apt.kitware.com/)
 CMAKE_VERSION="3.17.2-0kitware1"
